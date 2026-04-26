@@ -23,7 +23,7 @@
 	<style>
 	/* ===== BRTC Custom Styles ===== */
 	.hero-slide {
-		background: linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)) center/cover, url('images/5. RENNER RS-M_Booster_r_offen_RTTouch.webp') center/cover no-repeat;
+		background: linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)) center/cover, url('images/6. Breathing air compressor.png') center/cover no-repeat;
 		min-height: 520px;
 	}
 	.hero-slide .slide-content { padding: 155px 0 70px; color:#fff; }
@@ -100,6 +100,21 @@
 	/* Sub-section headings inside product sections */
 	.sub-heading { font-size:17px; font-weight:700; color:#2d3134; margin:30px 0 5px; padding-bottom:8px; border-bottom:2px solid #1d5096; display:inline-block; }
 
+	/* Header top gradient so nav is always readable over hero */
+	header {
+		background: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, transparent 100%);
+	}
+	header.menu_fixed {
+		background: #1d5096 !important;
+	}
+
+	/* Carousel arrows */
+	.carousel-control { width:44px; height:44px; top:50%; margin-top:-22px; border-radius:50%; background:rgba(255,255,255,0.15) !important; border:2px solid rgba(255,255,255,0.5); display:flex; align-items:center; justify-content:center; }
+	.carousel-control:hover { background:rgba(255,255,255,0.30) !important; }
+	.carousel-control.left { left:20px; }
+	.carousel-control.right { right:20px; }
+	.carousel-control .fa { font-size:18px; color:#fff; text-shadow:none; }
+
 	/* Fix equal-height card grids */
 	.eq-row {
 		display: flex !important;
@@ -170,8 +185,8 @@
 				</div></div>
 			</div>
 		</div>
-		<a class="left carousel-control" href="#heroCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-		<a class="right carousel-control" href="#heroCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+		<a class="left carousel-control" href="#heroCarousel" data-slide="prev"><span class="fa fa-chevron-left"></span></a>
+		<a class="right carousel-control" href="#heroCarousel" data-slide="next"><span class="fa fa-chevron-right"></span></a>
 	</div>
 </section>
 
