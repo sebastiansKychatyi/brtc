@@ -163,7 +163,7 @@
 					<p>Kompresorové zariadenia od európskych výrobcov so zárukou a kvalitou</p>
 					<a href="#contacts" class="btn">Kontaktujte nás</a>
 					<a href="#request" class="btn btn-active">Cenová ponuka</a>
-					<a href="#request" class="btn btn-white">Dotazník</a>
+					<a href="files/Questionnaire_Compressor_EN.pdf" class="btn btn-white" download>Dotazník</a>
 				</div></div>
 			</div>
 			<div class="item hero-slide">
@@ -172,7 +172,7 @@
 					<p>Od projektovania a výberu zariadení cez inštaláciu až po servisné služby</p>
 					<a href="#contacts" class="btn">Kontaktujte nás</a>
 					<a href="#request" class="btn btn-active">Cenová ponuka</a>
-					<a href="#request" class="btn btn-white">Dotazník</a>
+					<a href="files/Questionnaire_Compressor_EN.pdf" class="btn btn-white" download>Dotazník</a>
 				</div></div>
 			</div>
 			<div class="item hero-slide">
@@ -181,7 +181,7 @@
 					<p>Vzduch, dusík, hélium, vodík, kyslík, bioplyn — riešenia pre všetky priemyselné úlohy stláčania</p>
 					<a href="#contacts" class="btn">Kontaktujte nás</a>
 					<a href="#request" class="btn btn-active">Cenová ponuka</a>
-					<a href="#request" class="btn btn-white">Dotazník</a>
+					<a href="files/Questionnaire_Compressor_EN.pdf" class="btn btn-white" download>Dotazník</a>
 				</div></div>
 			</div>
 		</div>
@@ -451,26 +451,32 @@
 		</div>
 		<div class="row">
 			<div class="col-md-4 padbot30">
-				<h4 style="color:#1d5096;margin-bottom:20px;">Dotazník letöltése</h4>
-				<a href="#" class="dl-link"><i class="fa fa-download"></i> Dotazník 1</a>
-				<a href="#" class="dl-link"><i class="fa fa-download"></i> Dotazník 2</a>
-				<p style="color:rgba(255,255,255,.6);font-size:13px;margin-top:18px;">Töltse ki és küldje el a Dotazníket az ajánlat kéréséhez.</p>
+				<h4 style="color:rgba(255,255,255,.85);margin-bottom:20px;">Stiahnuť dotazník</h4>
+				<a href="files/Questionnaire_Compressor_EN.pdf" class="dl-link" download><i class="fa fa-download"></i> Dotazník – English (PDF)</a>
+				<a href="files/Questionnaire_Compressor_SK.pdf" class="dl-link" download><i class="fa fa-download"></i> Dotazník – Magyar (PDF)</a>
+				<p style="color:rgba(255,255,255,.6);font-size:13px;margin-top:18px;">Vyplňte dotazník a zašlite nám ho — navrhneme vám optimálne riešenie.</p>
 			</div>
 			<div class="col-md-8">
-				<form id="request-form" action="">
+				<form id="request-form" action="https://formspree.io/f/xkoenonq" method="POST">
 					<div class="row">
-						<div class="col-sm-6"><div class="form-group"><input type="text" class="form-control" name="name" placeholder="Meno" /></div></div>
+						<div class="col-sm-6"><div class="form-group"><input type="text" class="form-control" name="name" placeholder="Meno" required /></div></div>
 						<div class="col-sm-6"><div class="form-group"><input type="text" class="form-control" name="company" placeholder="Spoločnosť" /></div></div>
 					</div>
 					<div class="row">
-						<div class="col-sm-6"><div class="form-group"><input type="email" class="form-control" name="email" placeholder="E-mail" /></div></div>
+						<div class="col-sm-6"><div class="form-group"><input type="email" class="form-control" name="email" placeholder="E-mail" required /></div></div>
 						<div class="col-sm-6"><div class="form-group"><input type="tel" class="form-control" name="phone" placeholder="Telefón" /></div></div>
 					</div>
 					<div class="form-group">
 						<textarea class="form-control" name="message" rows="4" placeholder="Vaša správa / požiadavka" style="resize:none;"></textarea>
 					</div>
+					<div id="form-success" style="display:none;padding:12px 16px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.4);color:#fff;margin-bottom:14px;border-radius:3px;">
+						✓ Správa bola odoslaná. Ozveme sa vám čo najskôr.
+					</div>
+					<div id="form-error" style="display:none;padding:12px 16px;background:rgba(255,80,80,0.25);border:1px solid rgba(255,80,80,0.4);color:#fff;margin-bottom:14px;border-radius:3px;">
+						✗ Chyba pri odoslaní. Skúste prosím neskôr alebo nás kontaktujte priamo.
+					</div>
 					<div class="center">
-						<button type="submit" class="btn btn-active btn-lg">Cenová ponuka</button>
+						<button type="submit" class="btn btn-active btn-lg">Odoslať</button>
 						<a href="#contacts" class="btn btn-lg" style="margin-left:8px;">Kontakt</a>
 					</div>
 				</form>
@@ -566,6 +572,31 @@ jQuery(document).ready(function(){
 			t = t.length ? t : jQuery('[name='+this.hash.slice(1)+']');
 			if(t.length){ e.preventDefault(); jQuery('html,body').animate({scrollTop: t.offset().top - 70}, 700); }
 		}
+	});
+
+	jQuery('#request-form').on('submit', function(e){
+		e.preventDefault();
+		var $form = jQuery(this);
+		var $btn = $form.find('button[type=submit]');
+		$btn.prop('disabled', true).text('Odosielam...');
+		jQuery('#form-success, #form-error').hide();
+
+		fetch($form.attr('action'), {
+			method: 'POST',
+			body: new FormData($form[0]),
+			headers: { 'Accept': 'application/json' }
+		}).then(function(r){
+			if(r.ok){
+				jQuery('#form-success').show();
+				$form[0].reset();
+			} else {
+				jQuery('#form-error').show();
+			}
+		}).catch(function(){
+			jQuery('#form-error').show();
+		}).finally(function(){
+			$btn.prop('disabled', false).text('Odoslať');
+		});
 	});
 });
 </script>
