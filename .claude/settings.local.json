@@ -12,7 +12,8 @@
       "PowerShell(& powershell.exe -ExecutionPolicy Bypass -File \"c:\\\\Users\\\\ninja\\\\Desktop\\\\BTC---Company-internet-site-main\\\\ModeStyle\\\\translate.ps1\")",
       "Read(//c/Users/ninja/Desktop/**)",
       "PowerShell(Copy-Item \"C:\\\\Users\\\\ninja\\\\Desktop\\\\BTRC\\\\ModeStyle\\\\images\\\\BTC logo.jpg\" \"C:\\\\Users\\\\ninja\\\\Desktop\\\\BTRC\\\\images\\\\BTC logo.jpg\" -Force)",
-      "Bash(git config *)"
+      "Bash(git config *)",
+      "Read(//c/Users/ninja/Desktop/BTRC/**)"
     ]
   }
 }
