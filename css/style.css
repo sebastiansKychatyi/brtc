@@ -127,8 +127,8 @@ section {padding: 55px 0;}
 }
 .btn:focus, .btn:hover {color:#fff; background-color: #1d5096;}
 
-.btn-active {background-color:#1d5096; color:#fff;}
-.btn-active:hover {background-color:#2d3134; color:#fff;}
+.btn-active {background:linear-gradient(135deg,#1d5096 0%,#2563b8 100%); color:#fff; border-bottom:2px solid #e8a020;}
+.btn-active:hover {background:linear-gradient(135deg,#163d78 0%,#1d5096 100%); color:#fff; border-bottom-color:#e8a020;}
 
 .btn-white {background-color:#fff; color:#1d5096;}
 .btn-white:hover {background-color:#1d5096; color:#fff;}
@@ -183,6 +183,8 @@ header {
 	width:100%;
 	padding:8px 0;
 	background-color:#1d5096;
+	border-top:3px solid #e8a020;
+	box-shadow:0 2px 12px rgba(0,0,0,0.18);
 	transition: all 0.3s ease-in-out;
 	-webkit-transition: all 0.3s ease-in-out;
 }
@@ -236,9 +238,9 @@ header.menu_fixed .main_menu {padding-top:0;}
 }
 .main_menu li a:hover,
 .main_menu li.active a {
-	text-decoration:line-through;
-	color:#fff;
-	background-color:#0f2a50;
+	text-decoration:none;
+	color:#e8a020;
+	background-color:transparent;
 }
 
 
